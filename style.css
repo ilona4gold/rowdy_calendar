@@ -1,0 +1,348 @@
+/* 
+   TACTICAL ART GALLERY CALENDAR CSS 
+   Aesthetic: Minimalist, sophisticated, art-first.
+   Typography: Cormorant Garamond (Serif, artistic) + Inter (Sans-serif, clean UI)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1a1a1a;
+    --border-color: #2c2c2c;
+    --border-hover: #444444;
+    
+    --text-primary: #f0f0f0;
+    --text-muted: #8c8c8c;
+    --accent-color: #c5a880; /* Warm gold/bronze */
+    --accent-hover: #dfc5a0;
+    --accent-dim: rgba(197, 168, 128, 0.15);
+    
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    --sidebar-width: 240px;
+    --content-max-width: 1100px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Header style - Elegant, gallery-like */
+header.gallery-header {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 40px 24px 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.gallery-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    text-transform: uppercase;
+}
+
+.gallery-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Master Layout */
+.layout-wrapper {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: flex;
+    gap: 60px;
+    position: relative;
+}
+
+/* Main content column */
+main.gallery-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+/* Month block container */
+.month-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-margin-top: 40px;
+}
+
+.month-block-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.month-block-title span.month-number {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-weight: 300;
+}
+
+/* Vertical illustration card */
+.illustration-card {
+    width: 100%;
+    aspect-ratio: 842 / 1191; /* Native portrait ratio from user images */
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.illustration-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.calendar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Placeholder for artwork in progress */
+.img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #181818 0%, #242424 100%);
+    position: relative;
+    padding: 40px;
+    text-align: center;
+}
+
+.img-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px dashed rgba(197, 168, 128, 0.2);
+    pointer-events: none;
+}
+
+.placeholder-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.placeholder-title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+}
+
+.placeholder-status {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    letter-spacing: 0.15em;
+    font-weight: 400;
+}
+
+/* Sticky Sidebar Navigation */
+.sidebar-nav {
+    width: var(--sidebar-width);
+    position: sticky;
+    top: 40px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sidebar-section-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.months-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.month-menu-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.month-menu-item a:hover {
+    color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.02);
+    border-color: var(--border-color);
+}
+
+.month-menu-item.active-month a {
+    color: var(--bg-primary);
+    background-color: var(--accent-color);
+    font-weight: 500;
+}
+
+.month-menu-item.other-page-month a {
+    opacity: 0.6;
+}
+
+.month-menu-item.other-page-month a:hover {
+    opacity: 1;
+}
+
+.quarter-divider {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    letter-spacing: 0.1em;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 12px;
+}
+
+/* Page Indicator inside sidebar */
+.page-indicators {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.page-dot-link {
+    flex: 1;
+    text-align: center;
+    padding: 6px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.page-dot-link:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.page-dot-link.active-page {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--bg-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .layout-wrapper {
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+    
+    header.gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-top: 24px;
+    }
+    
+    .sidebar-nav {
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+    
+    .months-menu {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+    
+    .quarter-divider {
+        grid-column: span 3;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .months-menu {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .quarter-divider {
+        grid-column: span 2;
+    }
+    .gallery-title {
+        font-size: 2rem;
+    }
+}
+
+/* Scan-flash effect on target month */
+@keyframes target-flash {
+    0% {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0px rgba(197, 168, 128, 0.4);
+    }
+    50% {
+        border-color: #ffffff;
+        box-shadow: 0 0 20px 5px rgba(197, 168, 128, 0.6);
+    }
+    100% {
+        border-color: var(--border-color);
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0);
+    }
+}
+
+.flash-active {
+    animation: target-flash 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
